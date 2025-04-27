@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>甘草之家 - 天然甘草健康生活</title>
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #5a8f3d;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a8f3d;
+        }
+        
+        .logo span {
+            color: #d4a76a;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #d4a76a;
+        }
+        
+        /* 轮播图样式 */
+        .banner {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .banner img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* 分类导航 */
+        .categories {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .categories h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .category-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .category-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-item img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        
+        /* 搜索栏 */
+        .search-bar {
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: #5a8f3d;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 7px 15px;
+            cursor: pointer;
+        }
+        
+        /* 线下体验馆 */
+        .experience-stores {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .experience-stores h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .store-map {
+            height: 300px;
+            background-color: #eee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .store-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .store-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .store-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .store-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .store-card h3 {
+            margin-bottom: 10px;
+            color: #5a8f3d;
+        }
+        
+        .store-card p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .store-card button {
+            background-color: #d4a76a;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        /* 产品展示页样式 */
+        .product-page {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+        
+        .thumbnail-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .product-info h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 28px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .product-meta {
+            margin-bottom: 20px;
+        }
+        
+        .product-meta p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .product-description {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .add-to-cart, .buy-now {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart {
+            background-color: #f8f8f8;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .buy-now {
+            background-color: #5a8f3d;
+            color: white;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #eee;
+        }
+        
+        .buy-now:hover {
+            background-color: #4a7f2d;
+        }
+        
+        .product-reviews {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .product-reviews h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .review {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .review:last-child {
+            border-bottom: none;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .review-author {
+            font-weight: bold;
+        }
+        
+        .review-rating {
+            color: #d4a76a;
+        }
+        
+        .review-content {
+            margin-bottom: 10px;
+        }
+        
+        .review-images {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .review-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .review-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .review-action {
+            color: #666;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .related-products {
+            margin-bottom: 30px;
+        }
+        
+        .related-products h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-details {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 8px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-price-small {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        /* 资讯文章页样式 */
+        .article-page {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .article-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .article-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .article-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .article-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .article-content {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+        }
+        
+        .article-content h2, .article-content h3 {
+            margin: 30px 0 15px;
+            color: #5a8f3d;
+        }
+        
+        .related-articles {
+            margin-bottom: 30px;
+        }
+        
+        .related-articles h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .article-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .article-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .article-card-content {
+            padding: 15px;
+        }
+        
+        .article-card-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            height: 50px;
+            overflow: hidden;
+        }
+        
+        .article-card-excerpt {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            height: 60px;
+            overflow: hidden;
+        }
+        
+        .article-card-meta {
+            color: #999;
+            font-size: 12px;
+        }
+        
+        /* 会员中心样式 */
+        .member-center {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .member-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #d4a76a;
+        }
+        
+        .member-info h2 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .member-level {
+            display: inline-block;
+            background-color: #d4a76a;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .member-points {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .member-menu {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .menu-item {
+            text-align: center;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            background-color: #f0f0f0;
+        }
+        
+        .menu-item i {
+            font-size: 24px;
+            color: #5a8f3d;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .member-orders {
+            margin-bottom: 30px;
+        }
+        
+        .member-orders h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .order-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .order-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .order-tab.active {
+            border-bottom: 2px solid #5a8f3d;
+            color: #5a8f3d;
+            font-weight: bold;
+        }
+        
+        .order-list {
+            display: none;
+        }
+        
+        .order-list.active {
+            display: block;
+        }
+        
+        .order-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-number {
+            color: #666;
+        }
+        
+        .order-status {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .order-products {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .order-product-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .order-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .order-total {
+            font-weight: bold;
+        }
+        
+        .order-actions button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .order-actions button.primary {
+            background-color: #5a8f3d;
+            color: white;
+            border: none;
+        }
+        
+        .member-collections {
+            margin-bottom: 30px;
+        }
+        
+        .member-collections h2 {
+            margin-bottom: 15px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        /* 线下体验馆预约页样式 */
+        .booking-page {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .store-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .store-gallery {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .store-main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .store-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .store-thumbnail {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .store-info h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .store-meta {
+            margin-bottom: 20px;
+        }
+        
+        .store-meta p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .store-meta i {
+            margin-right: 8px;
+            color: #5a8f3d;
+        }
+        
+        .store-description {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .booking-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .booking-form h2 {
+            margin-bottom: 20px;
+            color: #5a8f3d;
+            font-size: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .calendar {
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .calendar-title {
+            font-weight: bold;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .calendar-day:hover {
+            background-color: #eee;
+        }
+        
+        .calendar-day.active {
+            background-color: #5a8f3d;
+            color: white;
+        }
+        
+        .calendar-day.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .time-slot {
+            padding: 8px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .time-slot:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .time-slot.active {
+            background-color: #5a8f3d;
+            color: white;
+        }
+        
+        .time-slot.disabled {
+            background-color: #f9f9f9;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .submit-btn {
+            background-color: #5a8f3d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #4a7f2d;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #d4a76a;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .category-grid, .store-list, .product-grid, .article-grid, .member-menu, .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-page, .store-detail {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .category-grid, .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-grid, .article-grid, .member-menu, .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">甘草<span>之家</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#products">产品中心</a></li>
+                    <li><a href="#articles">甘草资讯</a></li>
+                    <li><a href="#member">会员中心</a></li>
+                    <li><a href="#booking">体验馆预约</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页内容 -->
+    <main class="container" id="home">
+        <!-- 轮播图 -->
+<div class="hero-banner">
+    <img src="images/banner1.png" alt="甘草促销" class="banner-bg" style="--index:0;">
+    <img src="images/banner2.png" alt="甘草促销" class="banner-bg" style="--index:1;">
+    <img src="images/banner3.png" alt="甘草促销" class="banner-bg" style="--index:2;">
+    <div class="banner-content">
+        <h2>限时特惠</h2>
+        <p>全场甘草制品8折起</p>
+        <button>点击抢购</button>
+    </div>
+</div>
+
+        <style>
+    .hero-banner {
+        position: relative; /* 相对定位容器 */
+        margin: 20px 0;
+        overflow: hidden; /* 隐藏超出部分 */
+    }
+
+    .banner-bg {
+        width: 100%;
+        position: absolute; /* 绝对定位图片 */
+        top: 0;
+        left: 0;
+        opacity: 0; /* 默认隐藏 */
+        transition: opacity 0.5s ease; /* 添加淡入淡出效果 */
+        animation: carousel 9s infinite; /* 定义动画 */
+        animation-delay: calc(var(--index) * 3s); /* 根据索引延迟 */
+    }
+
+    .banner-bg:nth-child(1) {
+        animation-delay: 0s; /* 第一张图片延迟0秒 */
+    }
+
+    .banner-bg:nth-child(2) {
+        animation-delay: 3s; /* 第二张图片延迟3秒 */
+    }
+
+    .banner-bg:nth-child(3) {
+        animation-delay: 6s; /* 第三张图片延迟6秒 */
+    }
+
+    @keyframes carousel {
+        0%, 33.33% {
+            opacity: 1;
+        }
+        33.34%, 100% {
+            opacity: 0;
+        }
+    }
+
+    .banner-content {
+        position: absolute; /* 绝对定位文字层 */
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+</style>
+        
+        <!-- 分类导航 -->
+        <div class="categories">
+            <h2>产品分类</h2>
+            <div class="category-grid">
+                <div class="category-item">
+                    <img src="D:\甘草之家\images\banner2.jpg/60x60/5a8f3d/ffffff?text=中药" alt="中药材">
+                    <p>中药材</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/60x60/d4a76a/ffffff?text=保健" alt="保健品">
+                    <p>保健品</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/60x60/5a8f3d/ffffff?text=护肤" alt="护肤品">
+                    <p>护肤品</p>
+                </div>
+                <div class="category-item">
+                    <img src="https://via.placeholder.com/60x60/d4a76a/ffffff?text=食品" alt="食品饮料">
+                    <p>食品饮料</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <input type="text" placeholder="搜索甘草产品或文章资讯...">
+            <button>搜索</button>
+        </div>
+        
+        <!-- 线下体验馆推荐 -->
+        <div class="experience-stores">
+            <h2>线下体验馆推荐</h2>
+            <div class="store-map">
+                <img src="D:\甘草之家\images\甘草.jpg/1200x300/eeeeee/999999?text=体验馆地图" alt="体验馆地图">
+            </div>
+            <div class="store-list">
+                <div class="store-card">
+                    <h3>甘草之家北京体验馆</h3>
+                    <p>北京市朝阳区建国路88号</p>
+                    <p>营业时间: 10:00-22:00</p>
+                    <button>立即预约</button>
+                </div>
+                <div class="store-card">
+                    <h3>甘草之家上海体验馆</h3>
+                    <p>上海市浦东新区陆家嘴环路1000号</p>
+                    <p>营业时间: 10:00-22:00</p>
+                    <button>立即预约</button>
+                </div>
+                <div class="store-card">
+                    <h3>甘草之家广州体验馆</h3>
+                    <p>广州市天河区珠江新城88号</p>
+                    <p>营业时间: 10:00-22:00</p>
+                    <button>立即预约</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 产品展示页内容 -->
+    <section class="container" id="products" style="display: none;">
+        <div class="product-page">
+            <div class="product-gallery">
+                <img src="D:\甘草之家\images\甘草.jpg/600x400/eeeeee/999999?text=甘草产品主图" alt="甘草产品" class="main-image">
+                <div class="thumbnail-container">
+                    <img src="D:\甘草之家\images\甘草.jpg/150x100/eeeeee/999999?text=产品图1" alt="产品图1" class="thumbnail">
+                    <img src="https://via.placeholder.com/150x100/eeeeee/999999?text=产品图2" alt="产品图2" class="thumbnail">
+                    <img src="https://via.placeholder.com/150x100/eeeeee/999999?text=产品图3" alt="产品图3" class="thumbnail">
+                    <img src="https://via.placeholder.com/150x100/eeeeee/999999?text=产品视频" alt="产品视频" class="thumbnail">
+                </div>
+            </div>
+            <div class="product-info">
+                <h1>甘草养生茶 - 清热解毒 润肺止咳</h1>
+                <div class="product-price">¥98.00</div>
+                <div class="product-meta">
+                    <p>规格: 100g/盒</p>
+                    <p>产地: 甘肃</p>
+                    <p>库存: 有货</p>
+                </div>
+                <div class="product-description">
+                    <p>本品精选甘肃优质甘草，经过传统工艺炮制而成，具有清热解毒、润肺止咳、调和诸药等功效。适用于咽喉肿痛、咳嗽痰多、脾胃虚弱等症状的辅助治疗。</p>
+                    <p>使用方法：取3-5克，沸水冲泡，代茶饮用。每日1-2次。</p>
+                    <p>保质期：24个月</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="add-to-cart">加入购物车</button>
+                    <button class="buy-now">立即购买</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-reviews">
+            <h2>用户评价 (128)</h2>
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">张**</span>
+                    <span class="review-rating">★★★★★</span>
+                </div>
+                <div class="review-content">
+                    这款甘草茶效果很好，喝了三天喉咙就不痛了，味道也甘甜可口，会继续回购！
+                </div>
+                <div class="review-images">
+                    <img src="https://via.placeholder.com/80x80/eeeeee/999999?text=评价图" alt="评价图" class="review-image">
+                </div>
+                <div class="review-actions">
+                    <span class="review-action">2023-05-15</span>
+                    <span class="review-action">点赞(12)</span>
+                    <span class="review-action">回复</span>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">李**</span>
+                    <span class="review-rating">★★★★☆</span>
+                </div>
+                <div class="review-content">
+                    包装很精致，送人也很合适。效果不错，就是价格稍微有点贵。
+                </div>
+                <div class="review-actions">
+                    <span class="review-action">2023-04-28</span>
+                    <span class="review-action">点赞(5)</span>
+                    <span class="review-action">回复</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="related-products">
+            <h2>推荐搭配</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=甘草蜂蜜" alt="甘草蜂蜜" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">甘草蜂蜜 - 润肺止咳 天然健康</h3>
+                        <div class="product-price-small">¥68.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=甘草润喉糖" alt="甘草润喉糖" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">甘草润喉糖 - 缓解咽喉不适</h3>
+                        <div class="product-price-small">¥28.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=甘草面膜" alt="甘草面膜" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">甘草美白面膜 - 提亮肤色</h3>
+                        <div class="product-price-small">¥128.00</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/eeeeee/999999?text=甘草片" alt="甘草片" class="product-image">
+                    <div class="product-details">
+                        <h3 class="product-title">甘草片 - 传统中药材</h3>
+                        <div class="product-price-small">¥45.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资讯文章页内容 -->
+    <section class="container" id="articles" style="display: none;">
+        <div class="article-page">
+            <div class="article-header">
+                <h1 class="article-title">甘草的千年药用历史与文化传承</h1>
+                <div class="article-meta">发布时间: 2023-05-10 | 作者: 张教授 | 阅读量: 1258</div>
+                <img src="https://via.placeholder.com/800x400/eeeeee/999999?text=甘草文化" alt="甘草文化" class="article-image">
+            </div>
+            <div class="article-content">
+                <p>甘草，这味被誉为"国老"的中药材，在我国已有数千年的应用历史。从《神农本草经》到《本草纲目》，历代医家都对甘草推崇备至，称其能"调和诸药，解百毒"。</p>
+                
+                <h2>一、甘草的药用起源</h2>
+                <p>甘草的药用最早可追溯至商周时期。1973年，湖南马王堆汉墓出土的《五十二病方》中就有关于甘草的记载，这是我国现存最早的医学方书，证明早在2100多年前，甘草就已经被广泛应用于医疗实践中。</p>
+                
+                <h2
